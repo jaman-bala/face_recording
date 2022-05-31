@@ -45,8 +45,8 @@ class DeepAnalyser():
         return name
 
     def get_img_size(self, model_choise):
-        input_size = (160, 160)
-        input_size = MODEL_SIZE[model_choise]
+
+        input_size = MODEL_SIZE[model_choise], (160, 160)
         return input_size
 
     def parse_name(self, name):

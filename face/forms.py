@@ -11,7 +11,6 @@ MODEL_SIZE = {
     "Dlib": (160, 160),
 }
 
-# Create your views here.
 MODEL_CHOICES = (
     ("VGG-Face", "VGG-Face"),
     ("Facenet", "Facenet"),

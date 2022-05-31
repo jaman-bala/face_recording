@@ -16,12 +16,12 @@ def options(request):
 
 
 def index(request):
-    context = {}
-    context['form'] = UploadForms()
+    context = {'form': UploadForms()}
     return render(request, "index.html", context)
 
 
 def process_view(request):
+
     if request.method == "POST":
         form = UploadForms(request.POST, request.FILES)
         if form.is_valid():
@@ -32,14 +32,12 @@ def process_view(request):
 
             path = settings.MEDIA_ROOT + '/' + saved_model.model_pic.name
 
-            img_info = DeepAnalyser().analyse(path,
-                                              model_choice,
-                                              metric_choice,
-                                              detector_choice)
+            img_info = DeepAnalyser().analyse(path, model_choice, metric_choice, detector_choice)
+            print(img_info)
 
         else:
             print(form.errors)
-        return render(request, 'result.html', {'img': saved_model.model_pic.url, "img_info": img_info})
+        return render(request, 'result.html', {'path': saved_model.model_pic.name, "img_info": img_info})
     return HttpResponse("failure")
 
 
